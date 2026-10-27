@@ -1,0 +1,76 @@
+LIFTLAB — AI USAGE LOG
+Unit 2 Project: Part 1
+Project: LiftLab, a weightlifting program explorer and workout tracker
+AI tool used: ChatGPT (OpenAI, GPT-6)
+
+1. AI TOOLING DISCLOSURE
+
+I used ChatGPT to help plan, build, and revise my LiftLab website. I described the features and design I wanted, and ChatGPT generated and updated the HTML, CSS, and JavaScript. I provided feedback and requested changes over multiple versions of the app. The assistance included navigation, workout-program templates, personal-record editing, workout logging, progress charts, IPF comparisons, drag-and-drop dashboard customization, and debugging.
+
+The design was influenced by the general layouts of STNDRD, Liftoff, Arrow, and other workout-tracking apps. The site itself is a standalone browser application, not an official version of those apps or of the lifters' published training plans.
+
+2. PROMPTS I GAVE CHATGPT
+
+The following are my actual messages, kept in the order I sent them. Spelling and wording are preserved.
+
+PROMPT 1 — Initial app concept
+"I want create an app for weightlifting. The main page is going to have simple records or account bio. If you swipe left, the app guides you to powerlifting programs and if you swipe right, the app guides you to bodybuilding programs. So users can try popular programs created by famous lifters."
+
+PROMPT 2 — Design references
+"you can refer to stndrd, liftoff, arrows, and other fitness tracking apps for general layout"
+
+PROMPT 3 — Request to create the app
+"can you create an app based on the information"
+
+PROMPT 4 — More programs, combined dashboard, and new colors
+"can you add more programs and design the app so the progress page is on the same page as home. Change the colors. remove green and add more red"
+
+PROMPT 5 — Rename tabs and expand the training-program library
+"can you change the names of the tabs to powerlifting and bodybuilding instead of strength and build.
+
+add the following programs to strength
+smolov jr
+smolov
+MagOrt
+
+Add the following programs to build
+Upper/Lower x2 and x3
+PPLUL
+FBEOD
+FB x5"
+
+PROMPT 6 — Personal records and IPF comparisons
+"can you make it so i can change my pr and tells me my percentile in ipf by my age and weight."
+
+PROMPT 7 — First report of profile-saving problem
+"for profile, save and change dont work"
+
+PROMPT 8 — Repeated saving problem and request to simplify the interface
+"still even if i enter my pr and press save and change, my pr stays the same and doesn't change. Can you also clean up some unnecessary buttoms."
+
+PROMPT 9 — Explain IPF weight class and remove unnecessary section
+"why am i being compared to 83kg men when im only 77 kg. Remove \"Choose your discipline\" tab"
+
+PROMPT 10 — Check project requirements
+"does this website have all the requirement for the project"
+
+PROMPT 11 — Reorderable Home dashboard
+"can you add a function that user can drag and reorganize tabs like personal records or their progress"
+
+SUMMARY OF HOW THESE PROMPTS CHANGED THE APP
+
+- Created a Home profile/dashboard and separate Powerlifting and Bodybuilding views.
+- Used a dark interface with red accents instead of green.
+- Expanded the program library to 20 options, including Smolov Jr., Smolov, Mag/Ort, Upper/Lower variations, PPLUL, FBEOD, and Full Body x5.
+- Placed workout progress and history on the Home page.
+- Added editable lifting PRs, a three-lift total, age/bodyweight fields, and IPF GL scoring.
+- Added an optional OpenIPF results import for unofficial competition-result percentiles. These percentiles are not official IPF rankings; a GL score alone is not a percentile.
+- Clarified that a 77 kg male lifter belongs to the 83 kg IPF class under the applicable class boundaries.
+- Simplified the interface and made PR editing available directly on Home.
+- Added drag-and-drop reordering of Home sections with saved layout preferences.
+
+4. HOW THE CODE WORKS (ARCHITECTURE AND DATA FLOW)
+
+The application uses HTML for the page structure, CSS for the red and charcoal design, and JavaScript for the interactive features. The main parts of the website are Home, Powerlifting, and Bodybuilding. Program cards contain training templates with exercises, sets, repetitions, and a training schedule. When a user edits a personal record, JavaScript reads the input, validates the weight, updates the athlete data, and refreshes the displayed PRs and the totals. Program previews use the recorded PRs to generate suggested working weights where applicable. Workout logs store completed sets and are used to calculate training statistics and display progress/history on Home. The app remembers athlete data, active programs, and workout history. The layout order is stored separately under the key "liftlab-home-order-v1". Storage may be unavailable in restricted browser previews, so users should test persistence after refreshing and can use the app's backup export/import tools where available. The IPF comparison feature uses age, bodyweight, competition category, and the user's saved squat/bench/deadlift results. IPF GL points are calculated locally. An empirical percentile requires the user to import OpenIPF competition results; without those results the app should not show a made-up percentile. The Home dashboard supports dragging section handles to change the order of Personal Records, IPF Comparison, Current Program, and Progress & History. It also provides move-up and move-down controls. 
+
+
